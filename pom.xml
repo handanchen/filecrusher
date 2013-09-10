@@ -7,10 +7,17 @@
 	<packaging>jar</packaging>
 	<name>filecrush</name>
         <description>filecrush utility</description>
-
+	<repositories>
+	    <repository>
+	      <id>cloudera</id>
+	      <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+	    </repository>
+	</repositories>
+	
 	<properties>
-                <hadoop.version>0.20.2</hadoop.version>
-                <commons-cli.version>1.2</commons-cli.version>
+                <hadoop.version>2.0.0-cdh4.3.1</hadoop.version>
+				<mr.version>2.0.0-mr1-cdh4.3.1</mr.version>
+                <commons-cli.version>2.0.0-cdh4.3.1</commons-cli.version>
                 <commons-logging.version>1.0.4</commons-logging.version>
                 <commons-lang.version>2.3</commons-lang.version>
                 <commons-httpclient.version>3.0.1</commons-httpclient.version>
@@ -31,7 +38,7 @@
                                <plugin>
                                        <groupId>org.apache.maven.plugins</groupId>
                                        <artifactId>maven-eclipse-plugin</artifactId>
-                                       <version>2.5.1</version>
+                                       <version>2.3.2</version>
                                        <configuration>
                                                <projectNameTemplate>[artifactId]</projectNameTemplate>
                                                <wtpmanifest>true</wtpmanifest>
@@ -83,10 +90,11 @@
 
 	<dependency>
 			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-core</artifactId>
+			<artifactId>hadoop-client</artifactId>
 			<version>${hadoop.version}</version>
 			<scope>provided</scope>
 		</dependency>
+<!--
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
@@ -121,8 +129,9 @@
 			<artifactId>commons-cli</artifactId>
 			<version>${commons-cli.version}</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> -->
 		<!--  test dependencies -->
+		
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
@@ -156,9 +165,15 @@
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-test</artifactId>
-			<version>${hadoop.version}</version>
+			<version>${mr.version}</version>
 			<scope>provided</scope>
 		</dependency>
+	    <dependency>
+		    <groupId>org.apache.hadoop</groupId>
+		    <artifactId>hadoop-minicluster</artifactId>
+		    <version>${mr.version}</version>
+			<scope>provided</scope>
+	    </dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
