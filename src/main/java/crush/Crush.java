@@ -711,6 +711,9 @@ public class Crush extends Configured implements Tool {
 	 * Returns the output from {@link CrushReducer}. Each reducer writes out a mapping of source files to crush output file.
 	 */
 	private List<FileStatus> getOutputMappings() throws IOException {
+    if (!fs.exists(outDir)) fs.mkdirs(outDir);
+    else LOG.info(outDir + "Already exists");
+
 		FileStatus[] files = fs.listStatus(outDir, new PathFilter() {
 			Matcher matcher = Pattern.compile("part-\\d+").matcher("dummy");
 
@@ -731,7 +734,6 @@ public class Crush extends Configured implements Tool {
 	private void moveOutput() throws IOException {
 
 		List<FileStatus> listStatus = getOutputMappings();
-
 		Text srcFile			= new Text();
 		Text crushOut			= new Text();
 

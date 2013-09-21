@@ -456,8 +456,6 @@ public class CrushMapReduceTest extends HadoopTestCase {
 
 			"in", "out", "20101116153015"
 		});
-
-
 		/*
 		 * Skipped files should have been moved to the output dir.
 		 */

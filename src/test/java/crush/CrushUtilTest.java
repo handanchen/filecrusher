@@ -133,18 +133,14 @@ public class CrushUtilTest {
 
         Path aFile = new Path(this.tmpRootPath,"filea");
         SequenceFile.Writer writer =  SequenceFile.createWriter
-                (fs, jobConf, aFile, Text.class, Text.class ,
-                        SequenceFile.CompressionType.BLOCK,
-                new org.apache.hadoop.io.compress.GzipCodec());
+                (fs, jobConf, aFile, Text.class, Text.class);
         writer.append(new Text("1"), new Text("1"));
         writer.append(new Text("2"), new Text("2"));
         writer.close();
 
         Path bFile = new Path(this.tmpRootPath,"fileb");
         SequenceFile.Writer writerb =  SequenceFile.createWriter
-                (fs, jobConf, bFile, Text.class, Text.class ,
-                        SequenceFile.CompressionType.BLOCK,
-                new org.apache.hadoop.io.compress.GzipCodec());
+                (fs, jobConf, bFile, Text.class, Text.class);
         writerb.append(new Text("3"), new Text("4"));
         writerb.append(new Text("5"), new Text("6"));
         writerb.close();
