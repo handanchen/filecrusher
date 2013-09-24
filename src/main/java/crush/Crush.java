@@ -439,8 +439,14 @@ public class Crush extends Configured implements Tool {
 					throw new IllegalArgumentException("Crush timestamp must be 14 digits yyyymmddhhMMss: " + crushTimestamp);
 				}
 			}
-
-			dfsBlockSize = Long.parseLong(job.get("dfs.block.size"));
+      String tmpBlockSize = job.get("dfs.block.size");
+      if (tmpBlockSize != null) {
+      //    dfsBlockSize = Long.parseLong(job.get("dfs.block.size")));
+          dfsBlockSize = Long.parseLong(tmpBlockSize);}
+      else {
+          Configuration conf = new Configuration();
+          FileSystem fs = FileSystem.get(conf);
+          dfsBlockSize = fs.getDefaultBlockSize(srcDir);}
 			maxEligibleSize = (long) (dfsBlockSize * threshold);
 		}
 
