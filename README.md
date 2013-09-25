@@ -3,7 +3,7 @@ filecrusher
 This is a fork of the original filecrusher found here:
 http://www.jointhegrid.com/hadoop_filecrush/
 
-This was built using Cloudera Hadoop (CDH 4.1.3) libraries.
+This was built using Cloudera Hadoop (CDH 4.3.1) libraries.
 
 In order to build you will need to clone the repository and run the following:
 
